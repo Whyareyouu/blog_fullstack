@@ -10,7 +10,7 @@ import checkAuth from './utils/checkAuth.js';
 import * as UserController from './controllers/UserController.js';
 import * as PostController from './controllers/PostController.js';
 import handleValidationErrors from './utils/handleValidationErrors.js';
-
+import cors from 'cors';
 mongoose
 	.connect(
 		'mongodb+srv://admin:EDx3lYJa5CVdT63W@cluster0.opq7z5j.mongodb.net/blog?retryWrites=true&w=majority'
@@ -35,6 +35,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 app.use(express.json());
+app.use(cors());
 app.use('/uploads', express.static('uploads'));
 
 app.post(
