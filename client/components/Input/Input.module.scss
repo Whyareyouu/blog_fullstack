@@ -1,0 +1,19 @@
+.input {
+	max-width: 360px;
+	width: 100%;
+	background: none;
+	border: none;
+	border-bottom: 1px solid var(--border);
+	color: var(--white);
+	padding-bottom: 11px;
+	font-size: 16px;
+	line-height: 18px;
+}
+.input::placeholder {
+	color: rgba(255, 255, 255, 0.2);
+	padding-bottom: 9px;
+}
+.input:focus {
+	outline: none;
+	border-bottom: 1px solid var(--blue);
+}
