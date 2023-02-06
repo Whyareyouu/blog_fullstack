@@ -21,7 +21,7 @@ export const RegForm = ({ className, ...props }: RegFormProps): JSX.Element => {
 	const onSubmit = async (formState: Registerinterface) => {
 		console.log(formState);
 		try {
-			const data = await axios.post<RegisterInterfaceResponse>(
+			const data = await axios.post<RegisterInterfaceResponse, any>(
 				'http://localhost:3001/auth/register',
 				{
 					...formState,
@@ -44,7 +44,7 @@ export const RegForm = ({ className, ...props }: RegFormProps): JSX.Element => {
 			<Input placeholder='Эл. почта' {...register('email')} type='email' />
 			<Input placeholder='Пароль' {...register('password')} type='password' />
 			<button className={styles.button}>Зарегистрироваться</button>
-			<span>{isError}</span>
+			<span className={styles.error}>{isError}</span>
 			<span className={cn(styles.success, { [styles.disabled]: !isSuccess })}>
 				Спасибо за регистрацию!
 			</span>

@@ -1,0 +1,18 @@
+.LoginPage {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+	h1 {
+		font-size: 24px;
+		line-height: 26px;
+	}
+	p {
+		font-size: 14px;
+		line-height: 16px;
+	}
+	.LoginForm {
+		width: 100%;
+	}
+}

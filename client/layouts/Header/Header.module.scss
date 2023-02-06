@@ -22,6 +22,12 @@
 		gap: 30px;
 		font-size: 18px;
 		line-height: 20px;
+		.disabled {
+			display: none;
+		}
+		.profile_active {
+			display: block;
+		}
 		.search {
 			background-color: var(--light-black);
 			border: none;
