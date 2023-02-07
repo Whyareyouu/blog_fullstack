@@ -11,7 +11,6 @@ export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
 			setToken(token);
 		}
 	}, []);
-	console.log(token);
 	return (
 		<header className={cn(styles.header, className)} {...props}>
 			<nav className={styles.navbar}>
@@ -24,14 +23,7 @@ export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
 				</ul>
 			</nav>
 			<div className={styles.profile}>
-				<Link href='/auth/login' className={cn({ [styles.disabled]: token })}>
-					Профиль
-				</Link>
-				<Link
-					href='/profile'
-					className={cn(styles.disabled, { [styles.profile_active]: token })}>
-					Профиль
-				</Link>
+				<Link href={token ? '/profile' : '/auth/login'}>Профиль</Link>
 				<input
 					type='text'
 					placeholder='Поиск по блогу'

@@ -11,6 +11,10 @@
 	p {
 		font-size: 14px;
 		line-height: 16px;
+		.createAcc {
+			text-decoration: underline;
+			color: var(--blue);
+		}
 	}
 	.LoginForm {
 		width: 100%;

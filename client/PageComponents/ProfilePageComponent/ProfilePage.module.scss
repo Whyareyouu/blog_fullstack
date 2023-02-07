@@ -1,0 +1,42 @@
+.profile {
+	margin: 60px 50px 0;
+	.pageTitle {
+		margin-bottom: 60px;
+		font-size: 24px;
+		line-height: 26px;
+	}
+	.container {
+		display: flex;
+		justify-content: space-between;
+		.about {
+			display: flex;
+			flex-direction: column;
+			gap: 25px;
+			width: 100%;
+			.logout {
+				background: none;
+				border: none;
+				color: var(--red);
+				font-size: 16px;
+				line-height: 18px;
+				width: 140px;
+				cursor: pointer;
+			}
+		}
+		.avatar {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 15px;
+			button {
+				border: none;
+				background: none;
+				cursor: pointer;
+				text-decoration: underline;
+				color: var(--blue);
+				font-size: 16px;
+				line-height: 18px;
+			}
+		}
+	}
+}
