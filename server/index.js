@@ -1,3 +1,5 @@
+import * as dotenv from 'dotenv';
+dotenv.config();
 import express from 'express';
 import multer from 'multer';
 import mongoose from 'mongoose';
@@ -12,9 +14,7 @@ import * as PostController from './controllers/PostController.js';
 import handleValidationErrors from './utils/handleValidationErrors.js';
 import cors from 'cors';
 mongoose
-	.connect(
-		'mongodb+srv://admin:EDx3lYJa5CVdT63W@cluster0.opq7z5j.mongodb.net/blog?retryWrites=true&w=majority'
-	)
+	.connect(process.env.DB_LINK)
 	.then(() => {
 		console.log('DB ok');
 	})
@@ -32,7 +32,7 @@ const storage = multer.diskStorage({
 		cb(null, file.originalname);
 	},
 });
-
+const PORT = process.env.PORT || 3001;
 const upload = multer({ storage });
 app.use(express.json());
 app.use(cors());
@@ -76,7 +76,7 @@ app.patch(
 	PostController.update
 );
 
-app.listen(3001, (err) => {
+app.listen(PORT, (err) => {
 	if (err) {
 		return console.log(err);
 	}
