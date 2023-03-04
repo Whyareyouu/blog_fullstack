@@ -28,4 +28,4 @@ const LoginSlice = createSlice({
 
 export const isLogin = (state: InitialState) => state.data;
 export const LoginSliceReducer = LoginSlice.reducer;
-export const LoginActions = LoginSlice.actions;
+export const { addUserData } = LoginSlice.actions;

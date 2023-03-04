@@ -6,9 +6,11 @@ import { useForm } from 'react-hook-form';
 import { LoginInterface, LoginResponse } from '@/Interfaces/Login.interface';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { LoginActions } from '@/redux/slices/login.slice';
+import { addUserData } from '@/redux/slices/login.slice';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Cookies from 'js-cookie';
+import { login } from '@/redux/slices/token.slice';
 export const LoginForm = ({
 	className,
 	...props
@@ -30,15 +32,13 @@ export const LoginForm = ({
 	} = useForm<LoginInterface>({ mode: 'onBlur' });
 	const onSubmit = async (formState: LoginInterface) => {
 		try {
-			const data = await axios.post<LoginResponse>(
-				'http://localhost:3001/auth/login',
-				{
+			const response = await axios
+				.post<LoginResponse>('http://localhost:3001/auth/login', {
 					...formState,
-				}
-			);
-			if (data.data) {
-				dispatch(LoginActions.addUserData(data.data));
-				localStorage.setItem('token', data.data.token);
+				})
+				.then((res) => res.data);
+			if (response) {
+				dispatch(login(response.token));
 				setisSuccess(true);
 				reset();
 			}

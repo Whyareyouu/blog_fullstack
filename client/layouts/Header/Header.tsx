@@ -3,14 +3,9 @@ import cn from 'classnames';
 import styles from './Header.module.scss';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { useAppSelector } from '@/hooks/redux';
 export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
-	const [token, setToken] = useState<string>('');
-	useEffect(() => {
-		const token = localStorage.getItem('token');
-		if (typeof token === 'string') {
-			setToken(token);
-		}
-	}, []);
+	const auth = useAppSelector((state) => state.tokenSlice.isAuthenticated);
 	return (
 		<header className={cn(styles.header, className)} {...props}>
 			<nav className={styles.navbar}>
@@ -23,7 +18,7 @@ export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
 				</ul>
 			</nav>
 			<div className={styles.profile}>
-				<Link href={token ? '/profile' : '/auth/login'}>Профиль</Link>
+				<Link href={auth ? '/profile' : '/auth/login'}>Профиль</Link>
 				<input
 					type='text'
 					placeholder='Поиск по блогу'
