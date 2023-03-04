@@ -2,27 +2,30 @@ import { IProfile } from '@/Interfaces/Profile.interface';
 import { withLayout } from '@/layouts/Layout';
 import { ProfilePage } from '@/PageComponents';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { GetServerSideProps } from 'next';
 
-const Profile = () => {
-	const [profileData, setProfileData] = useState<IProfile>();
-	useEffect(() => {
-		try {
-			const token = localStorage.getItem('token');
-			if (typeof token === 'string') {
-				const profile = axios
-					.get<IProfile>('http://localhost:3001/auth/me', {
-						headers: {
-							Authorization: `${token}`,
-						},
-					})
-					.then((res) => setProfileData(res.data));
-			}
-		} catch (err) {
-			console.log(err);
-		}
-	}, []);
-	return <>{profileData && <ProfilePage profile={profileData} />} </>;
+const Profile = ({ profile }: ProfileProps) => {
+	return <div>{profile && <ProfilePage profile={profile} />} </div>;
 };
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+	const token = context.req.cookies.token;
+	const { data: profile } = await axios.get<IProfile>(
+		'http://localhost:3001/auth/me',
+		{
+			headers: {
+				Authorization: `${token}`,
+			},
+		}
+	);
+
+	return {
+		props: { profile },
+	};
+};
+
+interface ProfileProps extends Record<string, unknown> {
+	profile: IProfile;
+}
 
 export default withLayout(Profile);

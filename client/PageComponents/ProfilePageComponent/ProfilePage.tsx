@@ -4,24 +4,29 @@ import Image from 'next/image';
 import DefaultAvatar from './user.png';
 import { Input } from '@/components';
 import { useRouter } from 'next/router';
+import { useAppDispatch } from '@/hooks/redux';
+import { logout } from '@/redux/slices/token.slice';
 export const ProfilePage = ({
 	profile,
 	className,
 	...props
 }: ProfilePageProps): JSX.Element => {
 	const { username, email, avatarUrl } = profile;
+	const dispatch = useAppDispatch();
 	const router = useRouter();
 	const handleLogOut = () => {
-		localStorage.removeItem('token');
 		router.push('/');
+		dispatch(logout);
 	};
 	return (
 		<div className={styles.profile} {...props}>
 			<h1 className={styles.pageTitle}>Профиль</h1>
 			<div className={styles.container}>
 				<div className={styles.about}>
-					<Input value={username} disabled />
-					<Input value={email} disabled />
+					<label htmlFor='username'>Никнейм</label>
+					<Input value={username} disabled id='username' />
+					<label htmlFor='email'>Эл. почта</label>
+					<Input value={email} disabled id='email' />
 					<button className={styles.logout} onClick={handleLogOut}>
 						Выйти из аккаунта
 					</button>
