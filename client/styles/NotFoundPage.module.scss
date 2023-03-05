@@ -1,0 +1,18 @@
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+	max-width: 720px;
+	width: 720px;
+	margin: 50px auto;
+	text-align: center;
+}
+.link {
+	color: var(--blue);
+}
+.image {
+	max-width: 680px;
+	max-height: 480px;
+}

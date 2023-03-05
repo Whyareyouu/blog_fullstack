@@ -15,8 +15,8 @@ export const ProfilePage = ({
 	const dispatch = useAppDispatch();
 	const router = useRouter();
 	const handleLogOut = () => {
+		dispatch(logout());
 		router.push('/');
-		dispatch(logout);
 	};
 	return (
 		<div className={styles.profile} {...props}>

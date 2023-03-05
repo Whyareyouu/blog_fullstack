@@ -4,7 +4,6 @@ import cn from 'classnames';
 import { useForm } from 'react-hook-form';
 import { Input } from '../Input/Input';
 import React from 'react';
-import Select from 'react-select';
 import { ICreatePost } from '@/Interfaces/CreatePost.interface';
 
 export const CreatePost = (): JSX.Element => {

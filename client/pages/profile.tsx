@@ -3,9 +3,10 @@ import { withLayout } from '@/layouts/Layout';
 import { ProfilePage } from '@/PageComponents';
 import axios from 'axios';
 import { GetServerSideProps } from 'next';
+import NotFoundPage from './NotFoundPage';
 
 const Profile = ({ profile }: ProfileProps) => {
-	return <div>{profile && <ProfilePage profile={profile} />} </div>;
+	return <>{profile ? <ProfilePage profile={profile} /> : <NotFoundPage />} </>;
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

@@ -2,10 +2,9 @@ import { HeaderProps } from './Header.props';
 import cn from 'classnames';
 import styles from './Header.module.scss';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { useAppSelector } from '@/hooks/redux';
+import Cookies from 'js-cookie';
 export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
-	const auth = useAppSelector((state) => state.tokenSlice.isAuthenticated);
+	const auth = Cookies.get('token');
 	return (
 		<header className={cn(styles.header, className)} {...props}>
 			<nav className={styles.navbar}>
