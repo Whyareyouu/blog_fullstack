@@ -3,14 +3,18 @@ import { withLayout } from '@/layouts/Layout';
 import { ProfilePage } from '@/PageComponents';
 import axios from 'axios';
 import { GetServerSideProps } from 'next';
-import NotFoundPage from './NotFoundPage';
 
 const Profile = ({ profile }: ProfileProps) => {
-	return <>{profile ? <ProfilePage profile={profile} /> : <NotFoundPage />} </>;
+	return <>{profile && <ProfilePage profile={profile} />} </>;
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
 	const token = context.req.cookies.token;
+	if (!token) {
+		return {
+			notFound: true,
+		};
+	}
 	const { data: profile } = await axios.get<IProfile>(
 		'http://localhost:3001/auth/me',
 		{
