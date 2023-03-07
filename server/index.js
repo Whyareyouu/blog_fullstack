@@ -50,6 +50,7 @@ app.post(
 	handleValidationErrors,
 	UserController.register
 );
+app.post('/users', UserController.getAllUser);
 app.get('/auth/me', checkAuth, UserController.getMe);
 
 app.post('/upload', checkAuth, upload.single('image'), (req, res) => {

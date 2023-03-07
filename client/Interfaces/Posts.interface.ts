@@ -6,7 +6,7 @@ export interface IPosts {
 	viewsCount: number;
 	user?: any;
 	imageUrl: string;
-	createdAt: Date;
+	createdAt: string;
 	updatedAt: Date;
 	__v: number;
 }

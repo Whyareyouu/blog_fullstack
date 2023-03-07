@@ -1,0 +1,19 @@
+.form {
+	max-width: 360px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	.button {
+		background: none;
+		border: none;
+		padding: 10px;
+		font-size: 18px;
+		border-radius: 10px;
+		color: var(--white);
+		background-color: var(--blue);
+		cursor: pointer;
+		&:disabled {
+			cursor: default;
+		}
+	}
+}

@@ -1,6 +1,8 @@
 .post__wrapper {
-	max-width: 780px;
+	max-width: 680px;
 	box-sizing: none;
+	justify-content: center;
+	align-items: center;
 	background-color: var(--light-black);
 	padding: 30px;
 	display: flex;
@@ -21,9 +23,16 @@
 	.post__info {
 		display: flex;
 		justify-content: space-between;
+		font-size: 12px;
+		line-height: 14px;
+		color: var(--gray);
 		.post__date {
 			display: flex;
 			gap: 35px;
+		}
+		.post__read {
+			color: var(--blue);
+			cursor: pointer;
 		}
 	}
 }

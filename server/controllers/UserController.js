@@ -21,7 +21,7 @@ export const register = async (request, response) => {
 			{
 				_id: user._id,
 			},
-			'zMCmwckLU325pgc&#Zds@asBN1520QHS@&',
+			process.env.TOKENSECURE,
 			{
 				expiresIn: '30d',
 			}
@@ -100,6 +100,27 @@ export const getMe = async (request, response) => {
 		console.log(error);
 		response.status(500).json({
 			message: 'Нет доступа',
+		});
+	}
+};
+
+export const getAllUser = async (req, res) => {
+	try {
+		if (
+			req.body.username === process.env.ADMIN &&
+			req.body.password === process.env.PASSWORD
+		) {
+			const users = await Usermodel.find().exec();
+			res.json(users);
+		} else {
+			res.status(500).json({
+				message: 'Отказано в доступе',
+			});
+		}
+	} catch (error) {
+		console.log(error);
+		res.status(500).json({
+			message: 'Отказано в доступе',
 		});
 	}
 };
