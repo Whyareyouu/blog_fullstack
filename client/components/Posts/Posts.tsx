@@ -1,16 +1,12 @@
-import Image from 'next/image';
 import { PostsProps } from './Posts.props';
-export const Posts = ({}: PostsProps): JSX.Element => {
+import styles from './Posts.module.scss';
+import { Post } from '../Post/Post';
+export const Posts = ({ posts }: PostsProps): JSX.Element => {
 	return (
-		<div>
-			<Image src='' alt='' />
-			<h2></h2>
-			<p></p>
-			<div>
-				<p>date</p>
-				<p>tags</p>
-				<p>read</p>
-			</div>
+		<div className={styles.wrapper}>
+			{posts.map((post) => (
+				<Post post={post} key={post._id} />
+			))}
 		</div>
 	);
 };

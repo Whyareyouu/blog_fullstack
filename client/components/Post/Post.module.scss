@@ -1,0 +1,29 @@
+.post__wrapper {
+	max-width: 780px;
+	box-sizing: none;
+	background-color: var(--light-black);
+	padding: 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	border-radius: 5px;
+}
+.post__body {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	.post__text {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		text-align: justify;
+	}
+	.post__info {
+		display: flex;
+		justify-content: space-between;
+		.post__date {
+			display: flex;
+			gap: 35px;
+		}
+	}
+}

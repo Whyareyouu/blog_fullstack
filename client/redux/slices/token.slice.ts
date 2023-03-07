@@ -4,13 +4,11 @@ import Cookies from 'js-cookie';
 interface InitialState {
 	token: null | string;
 	isAuthenticated: boolean;
-	role: string;
 }
 
 const initialState: InitialState = {
 	token: Cookies.get('token') || null,
 	isAuthenticated: false,
-	role: 'user',
 };
 const tokenSlice = createSlice({
 	name: 'token',

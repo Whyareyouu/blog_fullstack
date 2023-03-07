@@ -1,11 +1,11 @@
-export interface Posts {
+export interface IPosts {
 	_id: string;
 	title: string;
 	text: string;
 	tags: string[];
 	viewsCount: number;
 	user?: any;
-	imageUrl?: string;
+	imageUrl: string;
 	createdAt: Date;
 	updatedAt: Date;
 	__v: number;
