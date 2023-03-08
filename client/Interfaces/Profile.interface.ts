@@ -6,4 +6,5 @@ export interface IProfile {
 	createdAt: Date;
 	updatedAt: Date;
 	__v: number;
+	role: string;
 }

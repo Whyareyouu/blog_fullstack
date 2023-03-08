@@ -12,6 +12,7 @@ export const register = async (request, response) => {
 			email: request.body.email,
 			username: request.body.username,
 			avatarUrl: request.body.avatarUrl,
+			role: 'user',
 			passwordHash: hash,
 		});
 
@@ -106,17 +107,8 @@ export const getMe = async (request, response) => {
 
 export const getAllUser = async (req, res) => {
 	try {
-		if (
-			req.body.username === process.env.ADMIN &&
-			req.body.password === process.env.PASSWORD
-		) {
-			const users = await Usermodel.find().exec();
-			res.json(users);
-		} else {
-			res.status(500).json({
-				message: 'Отказано в доступе',
-			});
-		}
+		const users = await Usermodel.find().exec();
+		res.json(users);
 	} catch (error) {
 		console.log(error);
 		res.status(500).json({

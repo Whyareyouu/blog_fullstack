@@ -9,6 +9,7 @@ import {
 	postCreateValidtion,
 } from './validations/validations.js';
 import checkAuth from './utils/checkAuth.js';
+import isAdmin from './utils/isAdmin.js';
 import * as UserController from './controllers/UserController.js';
 import * as PostController from './controllers/PostController.js';
 import handleValidationErrors from './utils/handleValidationErrors.js';
@@ -50,7 +51,7 @@ app.post(
 	handleValidationErrors,
 	UserController.register
 );
-app.post('/users', UserController.getAllUser);
+app.post('/admin/users', isAdmin, UserController.getAllUser);
 app.get('/auth/me', checkAuth, UserController.getMe);
 
 app.post('/upload', checkAuth, upload.single('image'), (req, res) => {

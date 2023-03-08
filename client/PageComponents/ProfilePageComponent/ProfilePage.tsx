@@ -11,7 +11,7 @@ export const ProfilePage = ({
 	className,
 	...props
 }: ProfilePageProps): JSX.Element => {
-	const { username, email, avatarUrl } = profile;
+	const { username, email, avatarUrl, role } = profile;
 	const dispatch = useAppDispatch();
 	const router = useRouter();
 	const handleLogOut = () => {
@@ -27,6 +27,8 @@ export const ProfilePage = ({
 					<Input value={username} disabled id='username' />
 					<label htmlFor='email'>Эл. почта</label>
 					<Input value={email} disabled id='email' />
+					<label htmlFor='role'>Роль</label>
+					<Input value={role} disabled id='role' />
 					<button className={styles.logout} onClick={handleLogOut}>
 						Выйти из аккаунта
 					</button>

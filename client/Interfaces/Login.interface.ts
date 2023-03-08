@@ -9,6 +9,7 @@ export interface LoginResponse {
 	avatarUrl?: string;
 	createdAt: Date;
 	updatedAt: Date;
+	role: string;
 	__v: number;
 	token: string;
 }

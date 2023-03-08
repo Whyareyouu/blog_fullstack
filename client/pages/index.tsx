@@ -21,7 +21,7 @@ function Home({ posts }: ProfileProps) {
 export default withLayout(Home);
 
 export const getServerSideProps: GetServerSideProps = async () => {
-	const { data: posts } = await axios.get<IPosts>(
+	const { data: posts } = await axios.get<IPosts[]>(
 		'http://localhost:3001/posts'
 	);
 	return {
