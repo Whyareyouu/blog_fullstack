@@ -67,7 +67,7 @@ export const login = async (request, response) => {
 			{
 				_id: user._id,
 			},
-			'zMCmwckLU325pgc&#Zds@asBN1520QHS@&',
+			process.env.TOKENSECURE,
 			{
 				expiresIn: '30d',
 			}

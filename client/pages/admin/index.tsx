@@ -5,11 +5,11 @@ import { AdminPage } from '@/PageComponents';
 import axios from 'axios';
 import { GetServerSideProps } from 'next';
 import styles from '../../styles/Admin.module.scss';
-const Admin = ({ users, posts }: AdminProps) => {
-	console.log(users);
+const Admin = ({ users, posts, profile }: AdminProps) => {
+	console.log(profile);
 	return (
 		<div className={styles.wrapper}>
-			<CreatePost className={styles.createpost} />
+			<CreatePost className={styles.createpost} role={profile.role} />
 			<AdminPage users={users} posts={posts} className={styles.users} />
 		</div>
 	);
@@ -54,4 +54,5 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 interface AdminProps extends Record<string, unknown> {
 	users: IProfile[];
 	posts: IPosts[];
+	profile: IProfile;
 }

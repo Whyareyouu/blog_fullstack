@@ -66,6 +66,7 @@ app.post(
 	checkAuth,
 	postCreateValidtion,
 	handleValidationErrors,
+	isAdmin,
 	PostController.create
 );
 app.get('/posts/:id', PostController.getOne);
