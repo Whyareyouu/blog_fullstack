@@ -6,7 +6,6 @@ import axios from 'axios';
 import { GetServerSideProps } from 'next';
 import styles from '../../styles/Admin.module.scss';
 const Admin = ({ users, posts, profile }: AdminProps) => {
-	console.log(profile);
 	return (
 		<div className={styles.wrapper}>
 			<CreatePost className={styles.createpost} role={profile.role} />

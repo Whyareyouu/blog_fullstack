@@ -1,6 +1,6 @@
 import { IPosts } from '@/Interfaces/Posts.interface';
 
-export const SpliceArray = (
+export const SliceArray = (
 	posts: IPosts[],
 	index: number = 0,
 	step: number = 4
@@ -11,6 +11,5 @@ export const SpliceArray = (
 		index * step,
 		currentPage > length ? length : currentPage
 	);
-	console.log(splicedArray);
 	return splicedArray;
 };
